@@ -11,6 +11,8 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     end
     assert_template 'users/new'
     assert_select 'div#error_explanation'
-    
+    assert_select '#error_explanation>ul>li' do |element|
+      assert_equal element.length, 4
+    end
   end
 end
